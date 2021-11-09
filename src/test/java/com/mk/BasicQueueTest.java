@@ -14,11 +14,11 @@ import java.util.concurrent.TimeoutException;
 
 public class BasicQueueTest extends BaseTest {
 
-    public static final String QUEUE_NAME = "mk-demo-queue";
+    public static final String QUEUE_NAME = "demo-queue";
 
-    public static final String EXCHANGE_DIRECT_TYPE_NAME = "mk-demo-exchange.direct";
+    public static final String EXCHANGE_DIRECT_TYPE_NAME = "demo-exchange.direct";
 
-    public static final String ROUTING_KEY = "mk-message";
+    public static final String ROUTING_KEY = "basic-message";
 
     public static final String MESSAGE_BODY = "Queue Message";
 

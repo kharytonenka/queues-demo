@@ -15,9 +15,9 @@ import java.util.concurrent.TimeoutException;
 
 public class RpcQueueTest extends BaseTest {
 
-    public static final String QUEUE_SENDER_NAME = "mk-demo-rpc-queue-sender";
+    public static final String QUEUE_SENDER_NAME = "demo-rpc-queue-sender";
 
-    public static final String QUEUE_RECEIVER_NAME = "mk-demo-rpc-queue-receiver";
+    public static final String QUEUE_RECEIVER_NAME = "demo-rpc-queue-receiver";
 
     public static final String MESSAGE_BODY = "rpc queue message";
 
