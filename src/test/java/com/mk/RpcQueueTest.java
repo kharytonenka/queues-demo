@@ -48,22 +48,22 @@ public class RpcQueueTest extends BaseTest {
 
     @Test(dependsOnMethods = "createServerTest")
     public void sendMessageFromClientToServerTest() throws IOException, InterruptedException {
-        final String corrId = UUID.randomUUID().toString();
+        final String correlationId = UUID.randomUUID().toString();
 
-        AMQP.BasicProperties props = new AMQP.BasicProperties
+        AMQP.BasicProperties properties = new AMQP.BasicProperties
                 .Builder()
-                .correlationId(corrId)
+                .correlationId(correlationId)
                 .replyTo(QUEUE_RECEIVER_NAME)
                 .build();
 
         System.out.println(String.format("Initial message: %s", MESSAGE_BODY));
 
-        channel.basicPublish("", QUEUE_SENDER_NAME, props, MESSAGE_BODY.getBytes("UTF-8"));
+        channel.basicPublish("", QUEUE_SENDER_NAME, properties, MESSAGE_BODY.getBytes("UTF-8"));
 
         final BlockingQueue<String> response = new ArrayBlockingQueue<>(1);
 
         channel.basicConsume(QUEUE_RECEIVER_NAME, true, (consumerTag, delivery) -> {
-            if (delivery.getProperties().getCorrelationId().equals(corrId)) {
+            if (delivery.getProperties().getCorrelationId().equals(correlationId)) {
                 response.offer(new String(delivery.getBody(), "UTF-8"));
             }
         }, consumerTag -> {
